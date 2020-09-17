@@ -12,6 +12,7 @@ public class WormController : MonoBehaviour {
     Transform wormHead;
     Transform wormSegment1;
     Transform wormSegment2;
+    Transform sprite;
     Transform projectileSpawner;
 
     public float fireRate = 5f;
@@ -26,7 +27,8 @@ public class WormController : MonoBehaviour {
         wormSegment1 = this.transform.Find("Worm Segment 1");
         wormSegment2 = wormSegment1.Find("Worm Segment 2");
         wormHead = wormSegment2.Find("Worm Head");
-        projectileSpawner = wormHead.Find("Projectile Spawner");
+        sprite = wormHead.Find("Sprite");
+        projectileSpawner = sprite.Find("Projectile Spawner");
 
         target = GameObject.FindObjectOfType<PlayerController>();
 
@@ -61,10 +63,10 @@ public class WormController : MonoBehaviour {
     void Target() {
 
         direction = target.transform.position - wormHead.position;
-        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 45f;
+        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         angle = Mathf.Clamp(angle, -maxAngle, maxAngle);
 
-        Quaternion headRotation = Quaternion.AngleAxis(angle * 2f, Vector3.forward);
+        Quaternion headRotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         Quaternion bodyRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         wormHead.transform.rotation = Quaternion.Slerp(wormHead.transform.rotation, headRotation, turnSpeed * Time.deltaTime);
         wormSegment2.transform.rotation = Quaternion.Slerp(wormSegment2.transform.rotation, bodyRotation, turnSpeed * Time.deltaTime);

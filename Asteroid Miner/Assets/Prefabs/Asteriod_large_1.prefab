@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5263250610137596711}
   - component: {fileID: 4297053299750957393}
   - component: {fileID: 545628533426374828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Asteriod_large_1
   m_TagString: mineable
   m_Icon: {fileID: 0}
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15c731eaf51d6148acb89995fe830a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
   speed: 0.55
   angle: 90
 --- !u!60 &545628533426374828

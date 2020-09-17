@@ -1,4 +1,6 @@
-line of sight for worm
+line of sight for worm *
+--change worm prefab (currently has weird angles)
+--add line of sight condition for firing projectile
 
 projectile sprite and crosshairs sprite for player
 - finished implementation of shooting
